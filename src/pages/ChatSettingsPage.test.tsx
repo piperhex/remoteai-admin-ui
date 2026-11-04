@@ -4,7 +4,7 @@ import { App, ConfigProvider } from 'antd';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { I18nProvider } from '../i18n-context';
 import { ChatSettingsPage } from './ChatSettingsPage';
-import { DEFAULT_CHAT_POLICY, type ChatPolicy } from '../../../../shared/chat/chatPolicy';
+import { DEFAULT_CHAT_POLICY, type ChatPolicy } from '@remoteai/shared/chat/chatPolicy';
 
 // Relay settings have their own API/form coverage in TurnQuotaSettings.test.tsx.
 vi.mock('./TurnQuotaSettings', () => ({ TurnQuotaSettings: () => null }));

@@ -1,7 +1,7 @@
 import BUILT_IN_PERMISSION_ZHResource from '@remoteai/i18n/copy/admin/permissions';
 import type { Language } from "./i18n";
 import type { PermissionDefinition } from "./types";
-import { marketText } from '../../../shared/provider-market/i18n';
+import { marketText } from '@remoteai/shared/provider-market/i18n';
 
 type PermissionMetadata = Pick<PermissionDefinition, "group" | "name" | "description">;
 

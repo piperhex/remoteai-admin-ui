@@ -1,7 +1,7 @@
 import EFFORT_LABELSResource from '@remoteai/i18n/copy/admin/titleEffortLabels';
 import inlineCopy from '@remoteai/i18n/copy/inline/admin/pages/TitleSettingsFields';
 import { Card, Form, Input, Select, Typography } from 'antd';
-import { TITLE_MODEL_PATTERN, TITLE_REASONING_EFFORTS } from '../../../../shared/chat/titleSettings';
+import { TITLE_MODEL_PATTERN, TITLE_REASONING_EFFORTS } from '@remoteai/shared/chat/titleSettings';
 
 const EFFORT_LABELS = EFFORT_LABELSResource;
 

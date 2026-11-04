@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Alert, Button, Input, Space } from 'antd';
-import type { MarketItem } from '../../../../shared/provider-market/types';
-import type { MarketText } from '../../../../shared/provider-market/i18n';
+import type { MarketItem } from '@remoteai/shared/provider-market/types';
+import type { MarketText } from '@remoteai/shared/provider-market/i18n';
 
 export function ProviderMarketReview({ item, busy, t, onReview }: {
   item: MarketItem; busy: boolean; t: MarketText;

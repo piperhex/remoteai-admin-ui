@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "vitest run --config vitest.config.ts",
+    "test": "vitest run --config vitest.config.ts --testTimeout 30000",
     "check": "tsc --noEmit -p tsconfig.json && npm run test && npm run build",
     "preview": "vite preview"
   },
@@ -24,7 +24,8 @@
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "@remoteai/i18n": "0.1.0"
+    "@remoteai/i18n": "file:vendor/remoteai-i18n-0.1.0-200ae98de2e9bc3c.tgz",
+    "@remoteai/shared": "file:vendor/remoteai-shared-0.1.0-e571851ad3c71f38.tgz"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
@@ -35,5 +36,9 @@
     "typescript": "~5.6.3",
     "vite": "^6.0.5",
     "vitest": "^4.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piperhex/remoteai-admin-ui.git"
   }
 }

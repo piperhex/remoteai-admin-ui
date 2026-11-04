@@ -4,7 +4,7 @@ import type { TableColumnsType, TablePaginationConfig } from "antd";
 import { Database, Edit3, KeyRound, Link2, MessagesSquare, Plus, RefreshCw, Search, ShieldCheck, Trash2 } from "lucide-react";
 import { LoungeUserModal, type LoungeAdminApi } from './LoungeUserModal';
 import { LoungePresence } from './LoungePresence';
-import { translateMessage } from '../../../../shared/localization/messages';
+import { translateMessage } from '@remoteai/shared/localization/messages';
 import { labelForRole } from "../i18n";
 import { useI18n } from "../i18n-context";
 import { formatDate } from "../utils/format";

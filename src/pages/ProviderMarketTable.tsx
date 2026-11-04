@@ -2,9 +2,9 @@ import type { Key } from 'react';
 import { useRef, useState } from 'react';
 import { Button, InputNumber, Popconfirm, Space, Table, Tag } from 'antd';
 import type { TableColumnsType } from 'antd';
-import type { MarketItem, MarketPage } from '../../../../shared/provider-market/types';
-import type { MarketText } from '../../../../shared/provider-market/i18n';
-import { MarketBadgeTag, MarketStatus } from '../../../../shared/provider-market/MarketStatus';
+import type { MarketItem, MarketPage } from '@remoteai/shared/provider-market/types';
+import type { MarketText } from '@remoteai/shared/provider-market/i18n';
+import { MarketBadgeTag, MarketStatus } from '@remoteai/shared/provider-market/MarketStatus';
 import { ProviderMarketBadgeEditor } from './ProviderMarketBadgeEditor';
 
 export type MarketMutation = (path: string, method: string, body: unknown) => Promise<boolean>;

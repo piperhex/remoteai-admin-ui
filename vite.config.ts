@@ -20,7 +20,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "../admin-go/public",
+    outDir: "dist",
     emptyOutDir: true,
     assetsDir: "admin-assets",
     chunkSizeWarningLimit: 1200,

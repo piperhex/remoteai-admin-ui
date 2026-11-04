@@ -1,8 +1,8 @@
 import inlineCopy from '@remoteai/i18n/copy/inline/admin/pages/ChatSettingsPage';
 import { useEffect, useState } from 'react';
 import { App, Button, Form, Space, Typography, theme } from 'antd';
-import type { ChatPolicy } from '../../../../shared/remote-chat/policy';
-import { parseChatPolicy } from '../../../../shared/chat/chatPolicy';
+import type { ChatPolicy } from '@remoteai/shared/remote-chat/policy';
+import { parseChatPolicy } from '@remoteai/shared/chat/chatPolicy';
 import { useI18n } from '../i18n-context';
 import { ChatSettingsFields } from './ChatSettingsFields';
 import { TurnQuotaSettings } from './TurnQuotaSettings';

@@ -28,11 +28,11 @@ import {
 } from "lucide-react";
 import { LANGUAGE_OPTIONS, type TranslationKey } from "../../i18n";
 import { useI18n } from "../../i18n-context";
-import { LanguageSelect } from "../../../../../shared/localization/LanguageSelect";
+import { LanguageSelect } from "@remoteai/shared/localization/LanguageSelect";
 import type { MenuKey, Permission, Profile } from "../../types";
 import { getLatestAndroidApkUrl } from "../../utils/releaseDownloads";
 import "./AdminShell.css";
-import { marketText } from '../../../../../shared/provider-market/i18n';
+import { marketText } from '@remoteai/shared/provider-market/i18n';
 
 interface AdminShellProps {
   activeKey: MenuKey;

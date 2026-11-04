@@ -1,7 +1,7 @@
 import inlineCopy from '@remoteai/i18n/copy/inline/admin/pages/ChatSettingsFields';
 import { interpolate as interpolateCopy } from '@remoteai/i18n';
 import { Card, Form, InputNumber, Switch, Typography } from 'antd';
-import { CHAT_POLICY_FIELDS } from '../../../../shared/remote-chat/policy';
+import { CHAT_POLICY_FIELDS } from '@remoteai/shared/remote-chat/policy';
 import { POLICY_SECTIONS, type PolicyField } from './chatPolicyFields';
 import { TitleSettingsFields } from './TitleSettingsFields';
 

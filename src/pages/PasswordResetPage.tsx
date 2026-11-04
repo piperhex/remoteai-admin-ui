@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { App as AntApp, Button, Card, Form, Input, Result, Space } from "antd";
 import { Languages } from "lucide-react";
-import { LanguageSelect } from "../../../../shared/localization/LanguageSelect";
+import { LanguageSelect } from "@remoteai/shared/localization/LanguageSelect";
 import { LANGUAGE_OPTIONS } from "../i18n";
 import { useI18n } from "../i18n-context";
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Alert, Button, InputNumber, Modal, Space, Spin, Switch, Typography } from 'antd';
-import { translateMessage } from '../../../../shared/localization/messages';
+import { translateMessage } from '@remoteai/shared/localization/messages';
 import type { MessageKey } from '@remoteai/i18n';
-import { MAX_MUTE_MINUTES, type LoungePolicy } from '../../../../shared/lounge/types';
+import { MAX_MUTE_MINUTES, type LoungePolicy } from '@remoteai/shared/lounge/types';
 import { useI18n } from '../i18n-context';
 import type { UserRow } from '../types';
 

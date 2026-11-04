@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Alert, Button, Input, Modal, Space } from 'antd';
-import type { MarketItem } from '../../../../shared/provider-market/types';
-import type { MarketKey, MarketText } from '../../../../shared/provider-market/i18n';
+import type { MarketItem } from '@remoteai/shared/provider-market/types';
+import type { MarketKey, MarketText } from '@remoteai/shared/provider-market/i18n';
 import { isPendingReview, MARKET_ENDPOINT, type MarketMutation } from './ProviderMarketTable';
 
 type BatchAction = 'approved' | 'rejected' | 'delete';

@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type Key } from 'react';
 import { Alert, Button, Input, Select, Space, theme } from 'antd';
 import { useI18n } from '../i18n-context';
-import { marketError, marketText, type MarketKey } from '../../../../shared/provider-market/i18n';
-import type { MarketDraft, MarketItem, MarketPage } from '../../../../shared/provider-market/types';
-import { MarketEditor } from '../../../../shared/provider-market/MarketEditor';
-import { MarketDetail } from '../../../../shared/provider-market/MarketDetail';
-import { parseItem } from '../../../../shared/provider-market/validation';
-import { MarketStatus } from '../../../../shared/provider-market/MarketStatus';
+import { marketError, marketText, type MarketKey } from '@remoteai/shared/provider-market/i18n';
+import type { MarketDraft, MarketItem, MarketPage } from '@remoteai/shared/provider-market/types';
+import { MarketEditor } from '@remoteai/shared/provider-market/MarketEditor';
+import { MarketDetail } from '@remoteai/shared/provider-market/MarketDetail';
+import { parseItem } from '@remoteai/shared/provider-market/validation';
+import { MarketStatus } from '@remoteai/shared/provider-market/MarketStatus';
 import { ProviderMarketReview } from './ProviderMarketReview';
 import { ProviderMarketTable, MARKET_ENDPOINT as ENDPOINT, MARKET_PAGE_SIZE } from './ProviderMarketTable';
 import { ProviderMarketBatchActions } from './ProviderMarketBatchActions';
-import '../../../../shared/provider-market/market.css';
+import '@remoteai/shared/provider-market/market.css';
 import './ProviderMarketPage.css';
 
 interface Props {

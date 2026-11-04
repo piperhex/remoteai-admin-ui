@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { DownloadReport } from '../../../../shared/app-update/downloadReport';
+import type { DownloadReport } from '@remoteai/shared/app-update/downloadReport';
 import type { UpdateSharingSettingsProps } from './useUpdateSharingSettings';
 
 export interface DailyDownloads {

@@ -4,7 +4,7 @@ import { App, Button, Card, Space, Typography } from "antd";
 import { Plus } from "lucide-react";
 import {
   isTokenCostPresetDocument, type TokenCostPresetDocument,
-} from "../../../../shared/token-cost-presets";
+} from "@remoteai/shared/token-cost-presets";
 import { useI18n } from "../i18n-context";
 import { TokenPricingTable, type PricingRow } from "./TokenPricingTable";
 

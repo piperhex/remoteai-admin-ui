@@ -2,7 +2,7 @@ import inlineCopy from '@remoteai/i18n/copy/inline/admin/pages/TokenPricingTable
 import { Input, InputNumber, Switch, Table } from "antd";
 import {
   DEFAULT_LONG_CONTEXT_THRESHOLD_TOKENS, MAX_LONG_CONTEXT_THRESHOLD_TOKENS, type TokenCostPreset,
-} from "../../../../shared/token-cost-presets";
+} from "@remoteai/shared/token-cost-presets";
 
 export interface PricingRow extends TokenCostPreset { key: string }
 interface Props {

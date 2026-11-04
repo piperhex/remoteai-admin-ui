@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Typography } from 'antd';
-import { translateMessage } from '../../../../shared/localization/messages';
+import { translateMessage } from '@remoteai/shared/localization/messages';
 import { useI18n } from '../i18n-context';
 import type { LoungeAdminApi } from './LoungeUserModal';
 

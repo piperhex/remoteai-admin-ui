@@ -1,4 +1,4 @@
-import { findAndroidReleaseAsset } from "../../../../shared/app-update/androidRelease";
+import { findAndroidReleaseAsset } from "@remoteai/shared/app-update/androidRelease";
 
 const LATEST_RELEASE_API = "https://api.github.com/repos/piperhex/remoteai/releases/latest";
 

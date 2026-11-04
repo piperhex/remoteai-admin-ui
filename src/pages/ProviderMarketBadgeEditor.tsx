@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Button, Input, Popover, Select, Space } from 'antd';
-import { MarketBadgeTag } from '../../../../shared/provider-market/MarketStatus';
-import { MARKET_BADGE_TONES, type MarketBadge } from '../../../../shared/provider-market/types';
-import type { MarketText } from '../../../../shared/provider-market/i18n';
+import { MarketBadgeTag } from '@remoteai/shared/provider-market/MarketStatus';
+import { MARKET_BADGE_TONES, type MarketBadge } from '@remoteai/shared/provider-market/types';
+import type { MarketText } from '@remoteai/shared/provider-market/i18n';
 
 export function ProviderMarketBadgeEditor({ badge, busy, t, onSave }: {
   badge?: MarketBadge | null; busy: boolean; t: MarketText;

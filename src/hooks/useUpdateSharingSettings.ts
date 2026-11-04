@@ -1,7 +1,7 @@
 import inlineCopy from '@remoteai/i18n/copy/inline/admin/hooks/useUpdateSharingSettings';
 import { useCallback, useEffect, useState } from 'react';
 import { App, Form } from 'antd';
-import type { UpdateSharingPolicy } from '../../../../shared/app-update/sharingPolicy';
+import type { UpdateSharingPolicy } from '@remoteai/shared/app-update/sharingPolicy';
 
 export interface UpdateSharingSettingsProps {
   api: <T>(path: string, options?: RequestInit) => Promise<T>;
