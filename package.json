@@ -8,8 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "test": "vitest run --config vitest.config.ts --testTimeout 30000",
-    "check": "tsc --noEmit -p tsconfig.json && npm run test && npm run build",
-    "preview": "vite preview"
+    "check": "npm run check:i18n && tsc --noEmit -p tsconfig.json && npm run test && npm run build",
+    "preview": "vite preview",
+    "check:i18n": "remoteai-i18n scan --root . --profile admin-ui"
   },
   "dependencies": {
     "@codemirror/commands": "^6.11.1",
@@ -24,8 +25,8 @@
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "@remoteai/i18n": "file:vendor/remoteai-i18n-0.1.0-200ae98de2e9bc3c.tgz",
-    "@remoteai/shared": "file:vendor/remoteai-shared-0.1.0-e571851ad3c71f38.tgz"
+    "@remoteai/i18n": "https://github.com/piperhex/remoteai-i18n/releases/download/i18n-v0.1.2/remoteai-i18n-0.1.2.tgz",
+    "@remoteai/shared": "file:vendor/remoteai-shared-0.1.0-475ab16aa0c07a6c.tgz"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
