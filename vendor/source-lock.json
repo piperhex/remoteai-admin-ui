@@ -1,6 +1,10 @@
 {
+  "sharedSource": {
+    "repository": "https://github.com/piperhex/remoteai-shared.git",
+    "revision": "5f1fe12d6007ce9472ed5bb03664d883682c5ae6"
+  },
   "repository": "https://github.com/piperhex/remoteai.git",
-  "revision": "5c4ec49c9f60a8e609a3b39dcf0390457045259c",
+  "revision": "6cd503064b622f227796a04165a4505b6b36fb9e",
   "languageSource": {
     "repository": "https://github.com/piperhex/remoteai-i18n.git",
     "revision": "9558ce13895eb3536e33fc3c6bdad5b4d9d01c0a",
@@ -8,10 +12,9 @@
     "artifact": "https://github.com/piperhex/remoteai-i18n/releases/download/i18n-v0.1.2/remoteai-i18n-0.1.2.tgz"
   },
   "packages": {
-    "shared": "remoteai-shared-0.1.0-475ab16aa0c07a6c.tgz"
+    "shared": "remoteai-shared-0.1.0-4e5f52d572a4fff5.tgz"
   },
   "files": {
-    "apps/desktop/src/pages/codexGui/attachmentTypes.ts": "45ab731705c86f768d6acef8a3b3d02abb3ded5b661da70285e99797b199b68f",
     "shared/app-update/androidRelease.ts": "3c21768cf24b75d897ae57d1bad8b1b4e32614700eee717cb76d3a8b85a1075d",
     "shared/app-update/downloadReport.ts": "ce703771ef2db40fd17635beae9a057b4735337c8bbfdbed7e98b8916a3cab59",
     "shared/app-update/peerLookup.ts": "edf2f1570d41e4c57c533145635f05cae7a391059639d411ead5d8d36d34a4aa",
@@ -20,6 +23,7 @@
     "shared/chat/dictation/client.ts": "dc1b30c7527673315aa5a43b7dfa2e8eadcea487617d1e338e259b94db164e5c",
     "shared/chat/dictation/recording.ts": "5658b8aaed0bb07df4172257d4420d4d28e2d8175b54034ee020686f84515507",
     "shared/chat/titleSettings.ts": "bfc75b48f8c8c17a344759e76577091afb475443a8cf16df0034f13218e72058",
+    "shared/conversation/attachmentTypes.ts": "45ab731705c86f768d6acef8a3b3d02abb3ded5b661da70285e99797b199b68f",
     "shared/localization/LanguageSelect.tsx": "7e78dd2b2dccee4974700b27dc69f9c5e78d3cba7743911fef4ae7df681fc8ea",
     "shared/localization/interfaceLanguage.ts": "98119adb9b96f720c785ce6d9580d25b599c73c62ad4b988fad1f2e1c083de62",
     "shared/localization/language.ts": "2d1482f2f000035282644e1bbea21497abd3a54a5f549a094215194e6f5974e3",
@@ -68,7 +72,7 @@
     "shared/remote-chat/channelBackpressure.ts": "22d651c9b610428db62ef0dfa5062fd8e294c637d54f212a299eefd502a7c376",
     "shared/remote-chat/cipher.ts": "8cc44112674e59c29ef0a9acd270b09b9f9e1d96c7011b785b3115e2d5c82a41",
     "shared/remote-chat/client/socket.ts": "3da379c4c666d77e3b96f3162fdfd7a4c736c43225af92f3db65353725a026c8",
-    "shared/remote-chat/composerAttachments.ts": "9704230b125e8ce3b9298041cb73b31941408724baaeacb1bc34c9bdc5238107",
+    "shared/remote-chat/composerAttachments.ts": "26e7387e34b4552a9bcf4878634b60e98e4c266f5bf99ea3b29db574c3c1169c",
     "shared/remote-chat/compressedPackets.ts": "43f7e4eee42374f6d9c312f1c0f70222bb8d4921fd6b1089f79ad8884199be03",
     "shared/remote-chat/connectionEndpoints.ts": "e61757566f283882899ff6f63e373457d5007fadddc327c8f027639a086c0803",
     "shared/remote-chat/connectionErrors.ts": "750409aee7061398f49e483b7ca63e818b68f746ff5ea0c1f7271edfb87b0ea3",

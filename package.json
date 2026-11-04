@@ -19,14 +19,14 @@
     "@codemirror/lint": "^6.9.7",
     "@codemirror/state": "^6.7.6",
     "@codemirror/view": "^6.43.14",
+    "@remoteai/i18n": "https://github.com/piperhex/remoteai-i18n/releases/download/i18n-v0.1.2/remoteai-i18n-0.1.2.tgz",
+    "@remoteai/shared": "file:vendor/remoteai-shared-0.1.0-4e5f52d572a4fff5.tgz",
     "antd": "^5.29.3",
     "dayjs": "^1.11.21",
     "echarts": "^6.1.0",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@remoteai/i18n": "https://github.com/piperhex/remoteai-i18n/releases/download/i18n-v0.1.2/remoteai-i18n-0.1.2.tgz",
-    "@remoteai/shared": "file:vendor/remoteai-shared-0.1.0-475ab16aa0c07a6c.tgz"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
