@@ -5,11 +5,11 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "vitest run --config vitest.config.ts --testTimeout 30000",
+    "dev": "vite --config scripts/vite.config.ts",
+    "build": "vite build --config scripts/vite.config.ts",
+    "test": "vitest run --config scripts/vitest.config.ts --testTimeout 30000",
     "check": "npm run check:i18n && tsc --noEmit -p tsconfig.json && npm run test && npm run build",
-    "preview": "vite preview",
+    "preview": "vite preview --config scripts/vite.config.ts",
     "check:i18n": "remoteai-i18n scan --root . --profile admin-ui"
   },
   "dependencies": {
