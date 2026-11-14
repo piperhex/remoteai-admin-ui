@@ -17,6 +17,7 @@ export default defineConfig({
       "/auth": "http://127.0.0.1:8080",
       "/sync": "http://127.0.0.1:8080",
       "/admin/api": "http://127.0.0.1:8080",
+      "/browser-home": "http://127.0.0.1:8080",
     },
   },
   build: {

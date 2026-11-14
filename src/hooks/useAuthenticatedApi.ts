@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import type { Translate } from "../i18n";
+import { hasTranslation, type Translate } from "../i18n";
 import type { AuthTokens } from "../types";
 
 export function useAuthenticatedApi(
@@ -97,7 +97,8 @@ export function useAuthenticatedApi(
   const api = useCallback(async <T,>(path: string, options: RequestInit = {}): Promise<T> => {
     const parse = async (response: Response) => {
       const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.message || response.statusText);
+      if (!response.ok) throw new Error(typeof data.code === 'string' && hasTranslation(data.code)
+        ? t(data.code) : data.message || response.statusText);
       return data as T;
     };
 

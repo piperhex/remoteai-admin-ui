@@ -11,6 +11,7 @@ export type MenuKey =
   | "officialAccounts"
   | "officialModels"
   | "announcement"
+  | "browserHome"
   | "chatSettings"
   | "updateSharing"
   | "chatTraffic"
