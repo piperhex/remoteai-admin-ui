@@ -12,6 +12,7 @@ export type MenuKey =
   | "officialModels"
   | "announcement"
   | "browserHome"
+  | "browserExtensions"
   | "chatSettings"
   | "updateSharing"
   | "chatTraffic"

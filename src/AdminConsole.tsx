@@ -20,6 +20,7 @@ import { LoginView } from "./components/LoginView";
 import { useAuthenticatedApi } from "./hooks/useAuthenticatedApi";
 import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { AnnouncementPage } from "./pages/AnnouncementPage";
+import { BrowserExtensionsPage } from "./pages/BrowserExtensionsPage";
 import { BrowserHomePage } from "./pages/BrowserHomePage";
 import { ChatSettingsPage } from "./pages/ChatSettingsPage";
 import { UpdateSharingPage } from "./pages/UpdateSharingPage";
@@ -156,6 +157,7 @@ const menuPermissions: Record<MenuKey, Permission> = {
   officialModels: "admin.official-accounts.read",
   announcement: "admin.announcements.read",
   browserHome: "admin.browser-home.read",
+  browserExtensions: "admin.browser-extensions.read",
   currency: "admin.currency.read",
   tokenPricing: "admin.token-pricing.read",
   providerMarket: "admin.provider-market.read",
@@ -179,6 +181,7 @@ const menuOrder: MenuKey[] = [
   "officialModels",
   "announcement",
   "browserHome",
+  "browserExtensions",
   "currency",
   "tokenPricing",
   "providerMarket",
@@ -1285,6 +1288,10 @@ export function AdminConsole({ dark, onThemeChange }: AdminConsoleProps) {
       );
     }
 
+    if (activeKey === "browserExtensions") {
+      return <BrowserExtensionsPage api={api}
+        canManage={Boolean(profile?.permissions?.includes('admin.browser-extensions.manage'))} />;
+    }
     if (activeKey === "browserHome") {
       return <BrowserHomePage api={api} canManage={Boolean(profile?.permissions?.includes('admin.browser-home.manage'))} />;
     }

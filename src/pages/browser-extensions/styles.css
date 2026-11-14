@@ -1,0 +1,17 @@
+.admin-browser-extensions { width: 100%; }
+.admin-browser-extensions .ant-upload-drag { padding: 16px; }
+.admin-extension-upload-icon { color: var(--ant-color-primary, #1677ff); margin-bottom: 12px; }
+.admin-extension-list { margin-top: 16px; }
+.admin-extension-row { display: flex; align-items: center; gap: 16px; padding: 20px 0; }
+.admin-extension-row + .admin-extension-row { border-top: 1px solid rgba(128,128,128,.16); }
+.admin-extension-avatar { width: 48px; height: 48px; display: grid; place-items: center; flex-shrink: 0;
+  background: rgba(128,128,128,.06); border-radius: 12px; }
+.admin-extension-avatar img { width: 32px; height: 32px; object-fit: contain; }
+.admin-extension-details { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.admin-extension-details .ant-typography { margin-bottom: 4px; }
+.admin-extension-actions { flex-shrink: 0; }
+@media (max-width: 900px) {
+  .admin-extension-row { flex-wrap: wrap; align-items: flex-start; }
+  .admin-extension-details { flex-basis: calc(100% - 64px); }
+  .admin-extension-actions { margin-left: 64px; }
+}
