@@ -16,7 +16,7 @@ const ENDPOINT = "/admin/api/token-cost-presets";
 const noticeStyle = { maxWidth: 400, whiteSpace: "normal" as const };
 
 export function TokenPricingPage({ api, canManage }: Props) {
-  const { language } = useI18n();
+  const { language, t } = useI18n();
   const zh = language === "zh";
   const { message } = App.useApp();
   const [document, setDocument] = useState<TokenCostPresetDocument | null>(null);
@@ -59,7 +59,7 @@ export function TokenPricingPage({ api, canManage }: Props) {
   };
   const add = () => setRows((current) => [...current, {
     key: crypto.randomUUID(), model: "", aliases: [], input: 0, cachedInput: 0, output: 0,
-    fastModeMultiplier: null, longContextPricing: false, sourceUrl: "",
+    fastModeMultiplier: null, ultrafastModeMultiplier: null, longContextPricing: false, sourceUrl: "",
   }]);
 
   return <Space direction="vertical" size="large" style={{ width: "100%" }}>
@@ -73,10 +73,7 @@ export function TokenPricingPage({ api, canManage }: Props) {
         ? inlineCopy["272000_Token_ef06f97d"]
         : inlineCopy.descriptionEn}
       </Typography.Text>
-      <Typography.Paragraph type="secondary">{zh
-        ? inlineCopy["text_a9e7449e"]
-        : inlineCopy["Set_Fast_mode_multipliers_per_0c8304e6"]}
-      </Typography.Paragraph>
+      <Typography.Paragraph type="secondary">{t("tokenPricing.speedMultipliersHint")}</Typography.Paragraph>
     </div>
     <Card loading={loading}>
       <TokenPricingTable rows={rows} onChange={setRows} disabled={!canManage || saving || !document} zh={zh} />

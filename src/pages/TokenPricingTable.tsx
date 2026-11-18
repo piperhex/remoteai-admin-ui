@@ -1,8 +1,10 @@
 import inlineCopy from '@remoteai/i18n/copy/inline/admin/pages/TokenPricingTable';
 import { Input, InputNumber, Switch, Table } from "antd";
 import {
-  DEFAULT_LONG_CONTEXT_THRESHOLD_TOKENS, MAX_LONG_CONTEXT_THRESHOLD_TOKENS, type TokenCostPreset,
+  DEFAULT_LONG_CONTEXT_THRESHOLD_TOKENS, MAX_LONG_CONTEXT_THRESHOLD_TOKENS, MAX_PRESET_MULTIPLIER, MAX_TOKEN_PRICE,
+  type TokenCostPreset,
 } from "@remoteai/shared/token-cost-presets";
+import { useI18n } from "../i18n-context";
 
 export interface PricingRow extends TokenCostPreset { key: string }
 interface Props {
@@ -11,20 +13,28 @@ interface Props {
   disabled: boolean;
   zh: boolean;
 }
-type NumericField = "input" | "cachedInput" | "output" | "fastModeMultiplier";
+type PriceField = "input" | "cachedInput" | "output";
+type MultiplierField = "fastModeMultiplier" | "ultrafastModeMultiplier";
 
 export function TokenPricingTable({ rows, onChange, disabled, zh }: Props) {
+  const { t } = useI18n();
+  const notListed = zh ? inlineCopy["text_f5175272"] : inlineCopy["Not_listed_e2dcbd03"];
   const update = (key: string, patch: Partial<PricingRow>) => onChange(rows.map(
     (row) => row.key === key ? { ...row, ...patch } : row,
   ));
-  const price = (row: PricingRow, field: NumericField) => <InputNumber
+  const price = (row: PricingRow, field: PriceField) => <InputNumber
     aria-label={row.model + " " + field} value={row[field]} disabled={disabled}
-    min={field === "fastModeMultiplier" ? 0.01 : 0} max={field === "fastModeMultiplier" ? 100 : 1_000_000_000}
-    placeholder={zh ? inlineCopy["text_f5175272"] : inlineCopy["Not_listed_e2dcbd03"]}
-    onChange={(value) => update(row.key, { [field]: field === "fastModeMultiplier" ? value : value ?? 0 })} style={{ width: 105 }} />;
-  return <Table rowKey="key" dataSource={rows} pagination={false} scroll={{ x: 1300 }} size="small"
+    min={0} max={MAX_TOKEN_PRICE}
+    placeholder={notListed}
+    onChange={(value) => update(row.key, { [field]: value ?? 0 })} style={{ width: 105 }} />;
+  const multiplier = (row: PricingRow, field: MultiplierField, label: string) => <InputNumber
+    aria-label={label} value={row[field] ?? null} disabled={disabled} min={0.01} max={MAX_PRESET_MULTIPLIER}
+    placeholder={field === "ultrafastModeMultiplier" ? "1×" : notListed}
+    onChange={(value) => update(row.key, { [field]: value })} style={{ width: 105 }} />;
+  return <Table rowKey="key" dataSource={rows} pagination={false} scroll={{ x: 1420 }} size="small"
     columns={[
-      { title: zh ? inlineCopy["text_c98e118e"] : inlineCopy["Model_5e2c614c"], key: "model", width: 190, render: (_, row) => <Input
+      { title: zh ? inlineCopy["text_c98e118e"] : inlineCopy["Model_5e2c614c"], key: "model", width: 190,
+        fixed: "left", render: (_, row) => <Input
         value={row.model} disabled={disabled} aria-label={zh ? inlineCopy["text_cb2f1709"] : inlineCopy["Model_name_a3c3370c"]}
         onChange={(event) => update(row.key, { model: event.target.value.trim().toLowerCase() })} /> },
       { title: zh ? inlineCopy["text_76a695f2"] : inlineCopy["Aliases_comma_separated_732ccf29"], key: "aliases", width: 190,
@@ -48,6 +58,10 @@ export function TokenPricingTable({ rows, onChange, disabled, zh }: Props) {
         value={row.sourceUrl} disabled={disabled} placeholder="https://" aria-label={row.model + " source"}
         onChange={(event) => update(row.key, { sourceUrl: event.target.value.trim() })} /> },
       { title: zh ? inlineCopy["text_10b99c2c"] : inlineCopy["Fast_mode_multiplier_1c436136"], key: "fastModeMultiplier",
-        render: (_, row) => price(row, "fastModeMultiplier") },
+        render: (_, row) => multiplier(row, "fastModeMultiplier", row.model + " fastModeMultiplier") },
+      { title: t("tokenPricing.ultrafastMultiplier"), key: "ultrafastModeMultiplier",
+        render: (_, row) => multiplier(row, "ultrafastModeMultiplier", t("tokenPricing.modelUltrafastMultiplier", {
+          model: row.model,
+        })) },
     ]} />;
 }
