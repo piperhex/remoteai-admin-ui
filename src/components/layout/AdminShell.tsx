@@ -162,7 +162,8 @@ export function AdminShell({
     <Layout className="admin-shell">
       <Layout.Sider className="admin-sider" breakpoint="lg" collapsedWidth={0} width={232}>
         <div className="brand-block" style={{ height: 58, padding: "0 18px" }}>
-          <div className="brand-mark">C</div>
+          <img className="brand-mark" src={new URL("../../assets/brand-logo.png", import.meta.url).href}
+            width={32} height={32} alt="" />
           <div className="brand-copy">
             <strong>Remote AI</strong>
             <span>{t("app.subtitle")}</span>

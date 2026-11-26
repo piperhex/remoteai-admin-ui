@@ -76,14 +76,8 @@ body {
 }
 
 .brand-mark {
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  color: #ffffff;
-  background: linear-gradient(135deg, #1769e0, #0b8f6f);
-  font-weight: 800;
+  flex: none;
+  display: block;
 }
 
 .brand-copy {
