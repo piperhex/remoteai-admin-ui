@@ -22,6 +22,7 @@ import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { AnnouncementPage } from "./pages/AnnouncementPage";
 import { BrowserExtensionsPage } from "./pages/BrowserExtensionsPage";
 import { BrowserHomePage } from "./pages/BrowserHomePage";
+import { FileSharingPage } from "./pages/FileSharingPage";
 import { ChatSettingsPage } from "./pages/ChatSettingsPage";
 import { UpdateSharingPage } from "./pages/UpdateSharingPage";
 import { TokenPricingPage } from "./pages/TokenPricingPage";
@@ -158,6 +159,7 @@ const menuPermissions: Record<MenuKey, Permission> = {
   announcement: "admin.announcements.read",
   browserHome: "admin.browser-home.read",
   browserExtensions: "admin.browser-extensions.read",
+  fileSharing: "admin.file-sharing.read",
   currency: "admin.currency.read",
   tokenPricing: "admin.token-pricing.read",
   providerMarket: "admin.provider-market.read",
@@ -182,6 +184,7 @@ const menuOrder: MenuKey[] = [
   "announcement",
   "browserHome",
   "browserExtensions",
+  "fileSharing",
   "currency",
   "tokenPricing",
   "providerMarket",
@@ -201,10 +204,12 @@ const menuOrder: MenuKey[] = [
 
 function firstAccessibleMenu(profile: Profile | null | undefined): MenuKey {
   const permissions = new Set(profile?.permissions ?? []);
-  return menuOrder.find((key) => (
-    permissions.has(menuPermissions[key])
-    || (key === "officialAccounts" && permissions.has("admin.official-accounts.read-own"))
-  )) ?? "myAccounts";
+  return menuOrder.find(key => canAccessMenu(key, permissions)) ?? "myAccounts";
+}
+
+function canAccessMenu(key: MenuKey, permissions: Set<Permission>) {
+  return permissions.has(menuPermissions[key])
+    || (key === "officialAccounts" && permissions.has("admin.official-accounts.read-own"));
 }
 
 export function AdminConsole({ dark, onThemeChange }: AdminConsoleProps) {
@@ -314,29 +319,26 @@ export function AdminConsole({ dark, onThemeChange }: AdminConsoleProps) {
   const [permissionModalOpen, setPermissionModalOpen] = useState(false);
   const [editingPermission, setEditingPermission] = useState<PermissionDefinition | null>(null);
 
-  const saveAuth = useCallback((next: AuthTokens | null) => {
+  const updateSession = useCallback((next: AuthTokens | null) => {
     setAuth(next);
     setProfile(next?.user ?? null);
-    if (next) setActiveKey(firstAccessibleMenu(next.user));
     persistAuth(next);
   }, []);
 
-  const { api, apiBlob, signOut } = useAuthenticatedApi(auth, saveAuth, t);
+  const saveAuth = useCallback((next: AuthTokens | null) => {
+    updateSession(next);
+    if (next) setActiveKey(firstAccessibleMenu(next.user));
+  }, [updateSession]);
+
+  const { api, apiBlob, signOut } = useAuthenticatedApi(auth, updateSession, t);
 
   const loadProfile = useCallback(async () => {
     if (!auth?.accessToken) return;
     try {
       const data = await api<Profile>("/auth/me");
       setProfile(data);
-      setActiveKey((current) => (
-        (
-          data.permissions?.includes(menuPermissions[current])
-          || (
-            current === "officialAccounts"
-            && data.permissions?.includes("admin.official-accounts.read-own")
-          )
-        ) ? current : firstAccessibleMenu(data)
-      ));
+      const permissions = new Set(data.permissions);
+      setActiveKey(current => canAccessMenu(current, permissions) ? current : firstAccessibleMenu(data));
     } catch (error) {
       message.error((error as Error).message);
       await signOut();
@@ -1291,6 +1293,9 @@ export function AdminConsole({ dark, onThemeChange }: AdminConsoleProps) {
     if (activeKey === "browserExtensions") {
       return <BrowserExtensionsPage api={api}
         canManage={Boolean(profile?.permissions?.includes('admin.browser-extensions.manage'))} />;
+    }
+    if (activeKey === "fileSharing") {
+      return <FileSharingPage api={api} canManage={Boolean(profile?.permissions?.includes('admin.file-sharing.manage'))} />;
     }
     if (activeKey === "browserHome") {
       return <BrowserHomePage api={api} canManage={Boolean(profile?.permissions?.includes('admin.browser-home.manage'))} />;

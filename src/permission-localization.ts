@@ -1,5 +1,5 @@
 import BUILT_IN_PERMISSION_ZHResource from '@remoteai/i18n/copy/admin/permissions';
-import type { Language } from "./i18n";
+import { hasTranslation, translate, type Language } from "./i18n";
 import type { PermissionDefinition } from "./types";
 import { marketText } from '@remoteai/shared/provider-market/i18n';
 
@@ -11,6 +11,11 @@ export function localizePermission(
   permission: PermissionDefinition,
   language: Language,
 ): PermissionDefinition {
+  if (permission.system && permission.code.startsWith('admin.file-sharing.')) {
+    const label = (key: string) => hasTranslation(key) ? translate(language, key) : key;
+    return { ...permission, group: label(permission.group), name: label(permission.name),
+      description: label(permission.description) };
+  }
   if (permission.system && permission.code.startsWith('admin.provider-market.')) {
     const t = marketText(language);
     const suffix = permission.code.slice('admin.provider-market.'.length);

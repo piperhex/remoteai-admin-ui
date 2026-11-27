@@ -13,6 +13,7 @@ export type MenuKey =
   | "announcement"
   | "browserHome"
   | "browserExtensions"
+  | "fileSharing"
   | "chatSettings"
   | "updateSharing"
   | "chatTraffic"

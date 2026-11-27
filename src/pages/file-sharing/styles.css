@@ -1,0 +1,49 @@
+.file-sharing {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.file-sharing-heading,
+.file-sharing-activity,
+.file-sharing-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-sharing-heading,
+.file-sharing-activity {
+  justify-content: space-between;
+}
+
+.file-sharing-heading .ant-typography {
+  margin-bottom: 4px;
+}
+
+.file-sharing-toolbar {
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.file-sharing-name {
+  overflow-wrap: anywhere;
+}
+
+.file-sharing-alert-text {
+  display: inline-block;
+  max-width: 400px;
+}
+
+.file-sharing-actions .ant-space-item {
+  max-width: 100%;
+}
+
+.file-sharing-actions .ant-btn {
+  max-width: 100%;
+  height: auto;
+  white-space: normal;
+  text-align: start;
+}
