@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef } from "react";
 import { hasTranslation, type Translate } from "../i18n";
 import type { AuthTokens } from "../types";
 
@@ -10,7 +10,8 @@ export function useAuthenticatedApi(
   const authRef = useRef(auth);
   const refreshPromiseRef = useRef<Promise<AuthTokens> | null>(null);
 
-  useEffect(() => {
+  // Pages opened immediately after sign-in can load data in their first passive effect.
+  useLayoutEffect(() => {
     authRef.current = auth;
   }, [auth]);
 
