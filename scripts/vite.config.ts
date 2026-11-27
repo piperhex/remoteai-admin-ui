@@ -2,8 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { Agent } from "node:http";
 
 const currentDir = fileURLToPath(new URL('../', import.meta.url));
+const fileSharingAgent = new Agent({ keepAlive: true });
 
 export default defineConfig({
   plugins: [react()],
@@ -16,6 +18,7 @@ export default defineConfig({
     proxy: {
       "/auth": "http://127.0.0.1:8080",
       "/sync": "http://127.0.0.1:8080",
+      "/admin/api/file-sharing": { target: "http://127.0.0.1:8080", agent: fileSharingAgent },
       "/admin/api": "http://127.0.0.1:8080",
       "/browser-home": "http://127.0.0.1:8080",
       "/browser-extensions": "http://127.0.0.1:8080",

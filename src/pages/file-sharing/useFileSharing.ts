@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Translate, TranslationKey } from '../../i18n';
 import {
-  FileMismatch, fileSharingEndpoint, progress, transferFile,
+  FileMismatch, fileSharingEndpoint, transferFile, uploadProgress,
   type FileSharingApi, type SharedFile, type SharedFileLibrary, type TransferInput,
 } from './transfer';
 
@@ -58,7 +58,7 @@ export function useFileSharing(api: FileSharingApi, t: Translate) {
       return { ...data, items };
     });
     setActivity({ id: item.id, name: item.name, phase: 'fileSharing.uploading',
-      percent: progress(item.uploadedBytes, item.size) });
+      percent: uploadProgress(item) });
   }
 
   async function start(input: TransferInput) {
@@ -69,7 +69,8 @@ export function useFileSharing(api: FileSharingApi, t: Translate) {
     setError(undefined);
     setActivity({ id: input.id, name: input.name, phase: 'fileSharing.checking', percent: 0 });
     try {
-      await transferFile(input, { api, chunkBytes: library.chunkBytes, signal: controller.signal, onSaved: recordSaved,
+      await transferFile(input, { api, chunkBytes: library.chunkBytes, uploadWindow: library.uploadWindow,
+        signal: controller.signal, onSaved: recordSaved,
         onCheck: percent => setActivity(current => current && { ...current, percent }) });
     } catch (reason) {
       if (!controller.signal.aborted) setError(transferError(t, reason));

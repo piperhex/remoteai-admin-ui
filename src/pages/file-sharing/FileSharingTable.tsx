@@ -2,7 +2,7 @@ import { Button, Progress, Space, Table, Tag, Tooltip, Typography } from 'antd';
 import { Copy, Pencil, Upload } from 'lucide-react';
 import { useI18n } from '../../i18n-context';
 import { formatDate } from '../../utils/format';
-import { progress, type SharedFile } from './transfer';
+import { uploadProgress, type SharedFile } from './transfer';
 
 interface Props {
   items: SharedFile[];
@@ -48,7 +48,7 @@ export function FileSharingTable({ items, loading, canManage, busy, activeId, se
             <Typography.Text type="secondary">
               {t(item.id === activeId ? 'fileSharing.uploading' : 'fileSharing.waiting')}
             </Typography.Text>
-            <Progress size="small" percent={progress(item.uploadedBytes, item.size)} />
+            <Progress size="small" percent={uploadProgress(item)} />
           </div> },
       { title: t('fileSharing.updatedAt'), width: 180, responsive: ['xl'],
         render: (_, item) => formatDate(item.updatedAt, language) },
